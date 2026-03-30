@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  entrax-api:
+    build: ../backend
+    ports:
+      - '8080:8080'
+    environment:
+      PORT: 8080
+      AZURE_EXPECTED_AUDIENCE: api://entrax-api
+  entrax-web:
+    build: ../frontend
+    ports:
+      - '4200:80'
+    depends_on:
+      - entrax-api
